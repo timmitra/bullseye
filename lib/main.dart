@@ -58,9 +58,6 @@ class _GamePageState extends State<GamePage> {
                   const Text("Hit Me!", style: TextStyle(color: Colors.blue)),
               onPressed: () {
                 _showAlert(context);
-                setState(() {
-                  _model.totalScore += _pointForCurrentRound();
-                });
               },
             ),
             Score(totalScore: _model.totalScore, round: _model.round)
@@ -81,6 +78,10 @@ class _GamePageState extends State<GamePage> {
       child: const Text('Awesome!'),
       onPressed: () {
         Navigator.of(context).pop();
+        setState(() {
+          _model.totalScore += _pointForCurrentRound();
+          _model.target = Random().nextInt(100) + 1;
+        });
       },
     );
 
