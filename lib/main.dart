@@ -6,6 +6,7 @@ import 'prompt.dart';
 import 'control.dart';
 import 'score.dart';
 import 'game_model.dart';
+import 'dart:math';
 
 void main() {
   runApp(const BullseyeApp());
@@ -40,7 +41,7 @@ class _GamePageState extends State<GamePage> {
   @override
   void initState() {
     super.initState();
-    _model = GameModel(50);
+    _model = GameModel(Random().nextInt(100) + 1);
   }
 
   @override
@@ -50,7 +51,7 @@ class _GamePageState extends State<GamePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Prompt(targetValue: 100),
+            Prompt(targetValue: _model.target),
             Control(model: _model),
             TextButton(
               child:
@@ -66,6 +67,19 @@ class _GamePageState extends State<GamePage> {
     );
   }
 
+  int _pointForCurrentRound() {
+    const int maximumScore = 100;
+    int differnce;
+    if (_model.current > _model.target) {
+      differnce = _model.current - _model.target;
+    } else if (_model.current < _model.target) {
+      differnce = _model.target - _model.current;
+    } else {
+      differnce = 0;
+    }
+    return maximumScore - differnce;
+  }
+
   void _showAlert(BuildContext context) {
     var okButton = TextButton(
       child: const Text('Awesome!'),
@@ -79,7 +93,8 @@ class _GamePageState extends State<GamePage> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Hello there!'),
-          content: Text('the slider\'s value is a ${_model.current}'),
+          content: Text('the slider\'s value is a ${_model.current}.\n'
+              'You scored ${_pointForCurrentRound()} points this round'),
           actions: [
             okButton,
           ],
