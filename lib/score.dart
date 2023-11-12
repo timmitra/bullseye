@@ -15,16 +15,16 @@ class Score extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
-            children: [
-              Text('Score: '),
-              Text('99999'),
+            children: <Widget>[
+              const Text('Score: '),
+              Text('$totalScore'),
             ],
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
-            children: [
+            children: <Widget>[
               Text('Round: '),
               Text('999'),
             ],
