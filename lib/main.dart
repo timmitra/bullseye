@@ -1,7 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/servcies.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const BullseyeApp());
@@ -12,6 +12,10 @@ class BullseyeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
     return const MaterialApp(
       title: 'Bullseye',
       home: GamePage(),
