@@ -1,14 +1,22 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/servcies.dart';
 
 void main() {
-  runApp(
-    const MaterialApp(
+  runApp(const BullseyeApp());
+}
+
+class BullseyeApp extends StatelessWidget {
+  const BullseyeApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
       title: 'Bullseye',
       home: GamePage(),
-    ),
-  );
+    );
+  }
 }
 
 class GamePage extends StatefulWidget {
