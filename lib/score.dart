@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class Score extends StatelessWidget {
   const Score(
@@ -16,7 +16,7 @@ class Score extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        TextButton(
+        CupertinoButton(
             child: const Text('Start Over'),
             onPressed: () {
               onStartOver();
@@ -39,7 +39,7 @@ class Score extends StatelessWidget {
             ],
           ),
         ),
-        TextButton(child: const Text('Info'), onPressed: () {}),
+        CupertinoButton(child: const Text('Info'), onPressed: () {}),
       ],
     );
   }
