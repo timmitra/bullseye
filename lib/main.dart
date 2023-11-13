@@ -68,9 +68,15 @@ class _GamePageState extends State<GamePage> {
   }
 
   int _pointForCurrentRound() {
+    var bonus = 0;
     const maximumScore = 100;
     var difference = _differenceAmount();
-    return maximumScore - difference;
+    if (difference == 0) {
+      bonus = 100;
+    } else if (difference <= 5) {
+      bonus = 50;
+    }
+    return maximumScore - difference + bonus;
   }
 
   String _alertTitle() {
