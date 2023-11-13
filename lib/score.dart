@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'text_styles.dart';
 import 'styled_button.dart';
+import 'about.dart';
 
 class Score extends StatelessWidget {
   const Score(
@@ -25,15 +26,17 @@ class Score extends StatelessWidget {
             onStartOver();
           },
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 32.0, right: 32.0),
-          child: Column(
-            children: <Widget>[
-              Text('Score: ', style: LabelTextStyle.bodyText1(context)),
-              Text('$totalScore',
-                  style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
-            ],
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 32.0, right: 32.0),
+            child: Column(
+              children: <Widget>[
+                Text('Score: ', style: LabelTextStyle.bodyText1(context)),
+                Text('$totalScore',
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
+              ],
+            ),
           ),
         ),
         Padding(
@@ -49,7 +52,12 @@ class Score extends StatelessWidget {
         ),
         StyledButton(
           icon: Icons.info,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AboutPage()),
+            );
+          },
         ),
       ],
     );
