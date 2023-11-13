@@ -1,4 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'text_styles.dart';
+import 'styled_button.dart';
 
 class Score extends StatelessWidget {
   const Score(
@@ -16,30 +19,38 @@ class Score extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        CupertinoButton(
-            child: const Text('Start Over'),
-            onPressed: () {
-              onStartOver();
-            }),
+        StyledButton(
+          icon: Icons.refresh,
+          onPressed: () {
+            onStartOver();
+          },
+        ),
         Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
+          padding: const EdgeInsets.only(left: 32.0, right: 32.0),
+          child: Column(
             children: <Widget>[
-              const Text('Score: '),
-              Text('$totalScore'),
+              Text('Score: ', style: LabelTextStyle.bodyText1(context)),
+              Text('$totalScore',
+                  style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
+          padding: const EdgeInsets.only(left: 32.0, right: 32.0),
+          child: Column(
             children: <Widget>[
-              const Text('Round: '),
-              Text('$round'),
+              Text('Round: ', style: LabelTextStyle.bodyText1(context)),
+              Text('$round',
+                  style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
             ],
           ),
         ),
-        CupertinoButton(child: const Text('Info'), onPressed: () {}),
+        StyledButton(
+          icon: Icons.info,
+          onPressed: () {},
+        ),
       ],
     );
   }
